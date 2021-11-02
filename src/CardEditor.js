@@ -11,7 +11,9 @@ class CardEditor extends React.Component {
         this.setState({ [event.target.name]: event.target.value });
 
     addCard = () => {
-        this.props.addCard(this.state);
+        if (this.state.front.trim() != '' && this.state.back.trim() != '') {
+            this.props.addCard(this.state);
+        }
         this.setState({ front: '', back: '' });
     };
     
