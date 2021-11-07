@@ -1,6 +1,7 @@
 import React from 'react';
 import CardEditor from './CardEditor';
 import CardViewer from './CardViewer';
+import Homepage from './Homepage';
 import { Switch, Route } from 'react-router-dom';
 
 
@@ -42,23 +43,26 @@ class App extends React.Component {
   render() {
     return (
       <Switch>
-      <Route exact path="/editor">
-        <CardEditor
-          addCard={this.addCard}
-          cards={this.state.cards}
-          deleteCard={this.deleteCard}
-          switchMode={this.switchMode}
-        />
-      </Route>
-      <Route exact path="/viewer">
-        <CardViewer 
-          cards={this.state.cards} 
-          switchMode={this.switchMode} 
-          incIndex={this.incIndex}
-          decIndex={this.decIndex}
-          index={this.state.index}
-        />
-      </Route>
+        <Route exact path="/">
+          <Homepage />
+        </Route>
+        <Route exact path="/editor">
+          <CardEditor
+            addCard={this.addCard}
+            cards={this.state.cards}
+            deleteCard={this.deleteCard}
+            switchMode={this.switchMode}
+          />
+        </Route>
+        <Route exact path="/viewer">
+          <CardViewer 
+            cards={this.state.cards} 
+            switchMode={this.switchMode} 
+            incIndex={this.incIndex}
+            decIndex={this.decIndex}
+            index={this.state.index}
+          />
+        </Route>
       </Switch>
     );
   }
