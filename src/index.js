@@ -11,7 +11,7 @@ import {
   ReactReduxFirebaseProvider,
   firebaseReducer,
 } from 'react-redux-firebase';
-import { composeWithDevTools } from 'redux-devtools-extension';
+
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -38,7 +38,7 @@ const rootReducer = combineReducers({
   });
   
   // Create store with reducers and initial state
-  const store = createStore(rootReducer, composeWithDevTools());
+  const store = createStore(rootReducer);
   
   // react-redux-firebase config
   const rrfConfig = {
