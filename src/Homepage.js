@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { firebaseConnect, isLoaded } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 
 
 class Homepage extends React.Component {
@@ -15,7 +16,7 @@ class Homepage extends React.Component {
         const links = keys.map(Id => {
             return (
                 <div>
-                    <Link to="/">{this.props.decks[Id]['name']}</Link>
+                    <Link onClick= {() => this.props.history.push(`/viewer/${Id}`)}>{this.props.decks[Id]['name']}</Link>
                     <br /> <br />
                 </div>
               
@@ -36,11 +37,11 @@ class Homepage extends React.Component {
 const mapStateToProps = (state) => {
     console.log("state", state);
     const decks = state.firebase.data.homepage;
-    console.log(decks);
     return { decks: decks };
 };
 
 export default compose (
     firebaseConnect(['/homepage']),
     connect(mapStateToProps),
+    withRouter,
 )(Homepage);
