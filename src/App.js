@@ -3,6 +3,7 @@ import CardEditor from './CardEditor';
 import CardViewer from './CardViewer';
 import Homepage from './Homepage';
 import { Switch, Route } from 'react-router-dom';
+import Test from './Test';
 
 
 class App extends React.Component {
@@ -62,6 +63,9 @@ class App extends React.Component {
             decIndex={this.decIndex}
             index={this.state.index}
           />
+        </Route>
+        <Route path = "/test">
+          <Test />
         </Route>
       </Switch>
     );
